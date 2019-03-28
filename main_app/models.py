@@ -1,7 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
-# from django.contrib.auth.models import User
+from django import forms
+from django.contrib.auth.models import User
 
 
 RATING = (
@@ -54,33 +55,30 @@ class Technology(models.Model):
 
 class Review(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    review = models.TextField(max_length = 250)
-    rating = models.CharField(
-        max_length=1,
     pitchdeck_review = models.TextField('Pitch Deck Feedback', max_length = 250)
     pitchdeck_rating = models.IntegerField(
         'Pitch Deck Rating',
-        choices = RATING,
+        choices = RATING
     )
     content_review = models.TextField('Content Feedback',max_length = 250)
     content_rating = models.IntegerField(
         'Content Rating',
-        choices = RATING,
+        choices = RATING
     )
     UIUX_review = models.TextField('UI/UX Feedback', max_length = 250)
     UIUX_rating = models.IntegerField(
         'UI/UX Rating',
-        choices = RATING,
+        choices = RATING
     )
     clean_code_review = models.TextField('Code Feedback', max_length = 250)
     clean_code_rating = models.IntegerField(
         'Code Rating',
-        choices = RATING,
+        choices = RATING
     )
     presentation_review = models.TextField('Presentation Feedback', max_length = 250)
     presentation_rating = models.IntegerField(
         'Presentation Rating',
-        choices = RATING,
+        choices = RATING
     )
 
     def get_absolute_url(self):
